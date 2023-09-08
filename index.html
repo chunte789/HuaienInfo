@@ -63,6 +63,22 @@
 		textlist.innerHTML = text6;
 	
 	}
+	function scaleInput() 
+	{
+			var a1 = window.innerWidth / inputfield.offsetWidth;
+			console.log(a1);
+            var newFontSize = window.innerWidth + "px";
+            inputfield.style.width = newFontSize;
+			inputfield.style.height = inputfield.offsetHeight * a1 + "px";
+			var paragraph = document.getElementById("InputField");
+            var computedStyle = window.getComputedStyle(paragraph);
+            var fontSize = computedStyle.getPropertyValue("font-size");
+            var numericFontSize = parseFloat(fontSize);
+			inputfield.style.fontSize = numericFontSize * a1 + "px";
+			var output = document.getElementById('textlist');
+			output.style.fontSize = 16 * a1 + 'px';
+	}
+	scaleInput();
 </script>
   </body>
 </html>
