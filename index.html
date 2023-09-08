@@ -7,7 +7,8 @@
     <input type="text" id="InputField" oninput="InputChange()" placeholder="輸入姓名 區域或編號">
 	<div id="textlist"></div>
   <script>
-	InputField.disable = true;
+	var inputfield = document.getElementById('InputField');
+	inputfield.disable = true;
 	var xhr = new XMLHttpRequest();
 	var pageText;
 	var text4 = []
@@ -38,7 +39,7 @@
 	
 	};
 	xhr.send();
-	InputField.disable = false;
+	inputfield.disable = false;
 	function InputChange()
 	{
  		textlist.textContent = ' ';
