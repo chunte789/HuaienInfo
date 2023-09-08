@@ -13,6 +13,7 @@ var xhr = new XMLHttpRequest();
 var pageText;
 var text4 = []
 var text5 = [];
+
 xhr.open('GET', 'https://script.google.com/macros/s/AKfycbxKOVvSeD2_dNrb0P9YYecoAt3VonW7Qub1qTp_6xulvpPEJU6cYodKpRc_AasJDHHP/exec', true);
 console.log(pageText);
 xhr.onload = function() 
@@ -53,11 +54,12 @@ function InputChange()
 			text5.push(text4[i]);
 		}
 	}
+var text6 = '';
 for(var i = 0; i < text5.length; i++)
 {
- textlist.textContent += text5[i];
+ text6 += text5[i];
 }
-	
+	textlist.textContent = text6;
 	
 }
 
