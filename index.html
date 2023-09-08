@@ -41,6 +41,7 @@ xhr.send();
 
 function InputChange()
 {
+ textlist.textContent = ' ';
  text5 = [];
 	var inputvalue = document.getElementById('InputField').value; 
 	console.log('000');
@@ -52,7 +53,11 @@ function InputChange()
 			text5.push(text4[i]);
 		}
 	}
-	textlist.textContent = text5[2];
+for(var i = 0; i < text5.length; i++)
+{
+ textlist.textContent += text5[i];
+}
+	
 	
 }
 
