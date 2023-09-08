@@ -4,7 +4,7 @@
   </head>
   <body>
     <input type="text" id="InputField" oninput="InputChange()">
-	<p id="textlist"> 輸出</p>
+	<div id="textlist"> 輸出</div>
   <script>
     
   
@@ -26,7 +26,7 @@ xhr.onload = function()
 		for(var i = 0; i < text1.length - 1; i++)
 		{
 			var text2 = text1[i].split(',');
-			var text3 = text2[0] +'　　'+ text2[1] +'　　'+ text2[2] + '<br>';
+			var text3 = text2[0] +'　　'+ text2[1] +'　　'+ text2[2] + '\n';
 			text4.push(text3);
 			console.log(text3);
 		}
