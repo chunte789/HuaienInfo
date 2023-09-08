@@ -33,7 +33,7 @@
     		} 
 		else 
 		{
-        	console.error('请求失败。状态码：' + xhr.status);
+        	console.error(xhr.status);
     		}
 	
 	};
@@ -59,7 +59,7 @@
  			text6 += text5[i];
 		}
 		if(inputvalue != '')
-		textlist.textContent = text6;
+		textlist.innerHTML = text6;
 	
 	}
 </script>
