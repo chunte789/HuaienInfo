@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <input type="text" id="InputField" oninput="InputChange()">
+	<p id="textlist"> 輸出</p>
+  <script>
+    
+  
+
+var xhr = new XMLHttpRequest();
+var pageText;
+var text4 = []
+var text5 = [];
+xhr.open('GET', 'https://script.google.com/macros/s/AKfycbxKOVvSeD2_dNrb0P9YYecoAt3VonW7Qub1qTp_6xulvpPEJU6cYodKpRc_AasJDHHP/exec', true);
+console.log(pageText);
+xhr.onload = function() 
+{
+    if (xhr.status === 200) 
+	{
+		pageText = xhr.responseText;
+        //console.log(pageText);
+		var text1 = pageText.split('.');
+		//console.log(text1);
+		for(var i = 0; i < text1.length - 1; i++)
+		{
+			var text2 = text1[i].split(',');
+			var text3 = text2[0] +'　　'+ text2[1] +'　　'+ text2[2] + '\n';
+			text4.push(text3);
+			console.log(text3);
+		}
+    } 
+	else 
+	{
+        console.error('请求失败。状态码：' + xhr.status);
+    }
+	
+};
+xhr.send();
+
+function InputChange()
+{
+	var inputvalue = document.getElementById('InputField').value; 
+	console.log('000');
+	for(var i = 0; i < text4.length; i++)
+	{
+		if(text4[i].includes(inputvalue))
+		{
+			console.log(text4[i]);
+			text5.push(text4);
+		}
+	}
+	textlist.textContent = text5[0];
+	
+}
+
+
+
+
+</script>
+
+  </body>
+</html>
