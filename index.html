@@ -35,7 +35,7 @@
     		} 
 		else 
 		{
-        	console.error(xhr.status);
+        		console.error(xhr.status);
     		}
 	
 	};
@@ -51,7 +51,7 @@
 		{
 			if(text4[i].includes(inputvalue))
 			{
-				console.log(text4[i]);
+				//console.log(text4[i]);
 				text5.push(text4[i]);
 			}
 		}
@@ -68,19 +68,19 @@
 	{
 		var a1 = window.innerWidth / inputfield.offsetWidth;
 		console.log(a1);
-        var newFontSize = window.innerWidth + "px";
-        inputfield.style.width = newFontSize;
+        	var newFontSize = window.innerWidth + "px";
+        	inputfield.style.width = newFontSize;
 		inputfield.style.height = inputfield.offsetHeight * a1 + "px";
 		var paragraph = document.getElementById("InputField");
-        var computedStyle = window.getComputedStyle(paragraph);
-        var fontSize = computedStyle.getPropertyValue("font-size");
-        var numericFontSize = parseFloat(fontSize);
+        	var computedStyle = window.getComputedStyle(paragraph);
+        	var fontSize = computedStyle.getPropertyValue("font-size");
+        	var numericFontSize = parseFloat(fontSize);
 		inputfield.style.fontSize = numericFontSize * a1 + "px";
 		paragraph = document.getElementById("textlist");
-        computedStyle = window.getComputedStyle(paragraph);
-        fontSize = computedStyle.getPropertyValue("font-size");
-        numericFontSize = parseFloat(fontSize);
-		console.log(numericFontSize);
+        	computedStyle = window.getComputedStyle(paragraph);
+        	fontSize = computedStyle.getPropertyValue("font-size");
+        	numericFontSize = parseFloat(fontSize);
+		//console.log(numericFontSize);
 		//paragraph.style.fontSize = numericFontSize * a1  *0.65 + "px";
 		paragraph.style.fontSize = window.innerWidth / 16 + "px";
 			
