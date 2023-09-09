@@ -61,7 +61,11 @@
  			text6 += text5[i];
 		}
 		if(inputvalue != '')
+		{
 			textlist.innerHTML = text6;
+			if(text5.length == 0)
+				textlist.innerHTML = '查無資料<br>';
+		}
 	
 	}
 	function scaleInput() 
