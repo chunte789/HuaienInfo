@@ -71,8 +71,9 @@
 	function scaleInput() 
 	{
 		var a1 = window.innerWidth / inputfield.offsetWidth;
+		a1 = Math.floor(a1);
 		console.log(a1);
-        	var newFontSize = window.innerWidth + "px";
+        	var newFontSize = window.innerWidth - 20 + "px";
         	inputfield.style.width = newFontSize;
 		inputfield.style.height = inputfield.offsetHeight * a1 + "px";
 		var paragraph = document.getElementById("InputField");
