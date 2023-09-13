@@ -11,19 +11,17 @@
 		  }
 		  #textlist
 		  {
-			  position: fixed;
-			  top: 25%;
-			  height: 75vh;
+			  height: 73vh;
 			  overflow:auto;
 		  }
 	  </style>
   </head>
   <body>
     <input type="text" id="InputField" oninput="InputChange()" placeholder="輸入姓名 區域或編號">
+    <p> <br></p>
 	<div id="textlist"></div>
   <script>
 	var inputfield = document.getElementById('InputField');
-	inputfield.disable = true;
 	var xhr = new XMLHttpRequest();
 	var pageText;
 	var text4 = []
@@ -54,7 +52,6 @@
 	
 	};
 	xhr.send();
-	inputfield.disable = false;
 	function InputChange()
 	{
  		textlist.textContent = ' ';
