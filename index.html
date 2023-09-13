@@ -9,16 +9,17 @@
 			  position: fixed;
 			  top: 0;
 		  }
-		  #textlist
+		  #textlist 
 		  {
-			  height: 73vh;
-			  overflow:auto;
-		  }
+              		position: relative;
+              		top: 43px;
+              		height: 73vh;
+              		overflow: auto;
+          }
 	  </style>
   </head>
   <body>
     <input type="text" id="InputField" oninput="InputChange()" placeholder="輸入姓名 區域或編號">
-    <p> <br></p>
 	<div id="textlist"></div>
   <script>
 	var inputfield = document.getElementById('InputField');
