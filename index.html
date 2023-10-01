@@ -19,6 +19,7 @@
             height: 60vh;
             overflow: auto;
             padding: 10px;
+            margin: 0;
         }
 
         .scroll-to-top {
@@ -36,18 +37,6 @@
             line-height: 50px;
             cursor: pointer;
         }
-
-        /* 添加媒體查詢以適應手機畫面 */
-        @media (max-width: 768px) {
-            #InputField {
-                width: 80%;
-            }
-
-            .scroll-to-top {
-                bottom: 5vh;
-                right: 5vw;
-            }
-        }
     </style>
 </head>
 <body>
@@ -56,7 +45,23 @@
     <div class="scroll-to-top" onclick="scrollToTop()">↑</div>
 
     <script>
-        /* 您的 JavaScript 代碼 */
+        var textlist = document.getElementById('textlist');
+        var scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+        textlist.addEventListener('scroll', function() {
+            if (textlist.scrollTop > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        function scrollToTop() {
+            textlist.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 以下為你的其他 JavaScript 代碼
+        // ...
 		var inputfield = document.getElementById('InputField');
 	var xhr = new XMLHttpRequest();
 	var pageText;
@@ -115,43 +120,6 @@
 		}
 	
 	}
-	function scaleInput() 
-	{
-		var a1 = window.innerWidth / inputfield.offsetWidth;
-		a1 = Math.floor(a1);
-		console.log(a1);
-        	var newFontSize = window.innerWidth - 20 + "px";
-        	inputfield.style.width = newFontSize;
-		inputfield.style.height = inputfield.offsetHeight * a1 + "px";
-		var paragraph = document.getElementById("InputField");
-        	var computedStyle = window.getComputedStyle(paragraph);
-        	var fontSize = computedStyle.getPropertyValue("font-size");
-        	var numericFontSize = parseFloat(fontSize);
-		inputfield.style.fontSize = numericFontSize * a1 + "px";
-		paragraph = document.getElementById("textlist");
-        	computedStyle = window.getComputedStyle(paragraph);
-        	fontSize = computedStyle.getPropertyValue("font-size");
-        	numericFontSize = parseFloat(fontSize);
-		//console.log(numericFontSize);
-		//paragraph.style.fontSize = numericFontSize * a1  *0.65 + "px";
-		paragraph.style.fontSize = window.innerWidth / 17 + "px";
-			
-	}
-	//scaleInput();
-	window.onscroll = function() {
-            var scrollHeight = document.documentElement.scrollTop;
-            var button = document.querySelector('.scroll-to-top');
-            if (scrollHeight > 300) {
-                button.style.display = "block";
-            } else {
-                button.style.display = "none";
-            }
-        };
-
-        // 回到頂部函數
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
     </script>
 </body>
 </html>
