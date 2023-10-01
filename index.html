@@ -1,68 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>懷恩塔塔位查詢系統</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-size: 16px; /* 設定基本字體大小，使用相對單位 */
-        }
-
-        #InputField {
-            width: 90%; /* 使用相對寬度 */
-            font-size: 1em; /* 使用相對字體大小 */
-            margin: 10px;
-            padding: 10px;
-        }
-
-        #textlist {
-            height: 60vh;
-            overflow: auto;
-            padding: 10px;
-            margin: 0;
-        }
-
-        .scroll-to-top {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            font-size: 24px;
-            line-height: 50px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+  <head>
+	  <title>懷恩塔塔位查詢系統</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <style>/*
+		  #InputField
+		  {
+			  position: fixed;
+			  top: 0;
+			  /*margin-bottom: 20%;*/
+		  }
+          #textlist {
+              position: relative;
+              /*top: 10%;*/
+              height: 73vh;
+              overflow: auto;
+          }*/
+	  </style>
+  </head>
+  <body>
     <input type="text" id="InputField" oninput="InputChange()" placeholder="輸入姓名 區域或編號">
-    <div id="textlist"></div>
-    <div class="scroll-to-top" onclick="scrollToTop()">↑</div>
-
-    <script>
-        var textlist = document.getElementById('textlist');
-        var scrollToTopBtn = document.querySelector('.scroll-to-top');
-
-        textlist.addEventListener('scroll', function() {
-            if (textlist.scrollTop > 300) {
-                scrollToTopBtn.style.display = "block";
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
-        });
-
-        function scrollToTop() {
-            textlist.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // 以下為你的其他 JavaScript 代碼
-        // ...
-		var inputfield = document.getElementById('InputField');
+	<div id="textlist"></div>
+  <script>
+	var inputfield = document.getElementById('InputField');
 	var xhr = new XMLHttpRequest();
 	var pageText;
 	var text4 = []
@@ -120,6 +80,29 @@
 		}
 	
 	}
-    </script>
-</body>
+	function scaleInput() 
+	{
+		var a1 = window.innerWidth / inputfield.offsetWidth;
+		a1 = Math.floor(a1);
+		console.log(a1);
+        	var newFontSize = window.innerWidth - 20 + "px";
+        	inputfield.style.width = newFontSize;
+		inputfield.style.height = inputfield.offsetHeight * a1 + "px";
+		var paragraph = document.getElementById("InputField");
+        	var computedStyle = window.getComputedStyle(paragraph);
+        	var fontSize = computedStyle.getPropertyValue("font-size");
+        	var numericFontSize = parseFloat(fontSize);
+		inputfield.style.fontSize = numericFontSize * a1 + "px";
+		paragraph = document.getElementById("textlist");
+        	computedStyle = window.getComputedStyle(paragraph);
+        	fontSize = computedStyle.getPropertyValue("font-size");
+        	numericFontSize = parseFloat(fontSize);
+		//console.log(numericFontSize);
+		//paragraph.style.fontSize = numericFontSize * a1  *0.65 + "px";
+		paragraph.style.fontSize = window.innerWidth / 17 + "px";
+			
+	}
+	scaleInput();
+</script>
+  </body>
 </html>
