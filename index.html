@@ -9,7 +9,7 @@
         font-size: 1em; /* 使用相對字體大小 */
         margin: 10px;
         padding: 10px;
-		box-sizing: border-box;
+        box-sizing: border-box;
       }
       #textlist {
         height: 75vh;
@@ -69,7 +69,11 @@
         for (var i = 0; i < text4.length; i++) {
           if (text4[i].includes(inputvalue)) {
             //console.log(text4[i]);
+            //var text7 = "<u>" + text4[i] + "</u>";
+
             text5.push(text4[i]);
+            text5.push("________________________________<br>");
+            //text5.push("<br>");
           }
         }
         var text6 = "";
