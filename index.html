@@ -1,112 +1,110 @@
 <!DOCTYPE html>
 <html>
   <head>
-	  <title>懷恩塔塔位查詢系統</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <style>#InputField {
-            width: 90%; /* 使用相對寬度 */
-            font-size: 1em; /* 使用相對字體大小 */
-            margin: 10px;
-            padding: 10px;
-        }
+    <title>懷恩塔塔位查詢系統</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      #InputField {
+        width: 90%; /* 使用相對寬度 */
+        font-size: 1em; /* 使用相對字體大小 */
+        margin: 10px;
+        padding: 10px;
+      }
 
-        #textlist {
-            height: 75vh;
+      #textlist {
+        height: 75vh;
         overflow: auto;
-        //padding: 10px;
-        //margin: 0;
-        //white-space: nowrap; /* 避免文字換行 */
-		//width: 80%; /* 将textlist宽度设置为屏幕宽度的100% */
-		//font-size: 1em; /* 使用vw单位，根据屏幕宽度自动调整字体大小 */
-		position: relative;
-        }
-	  </style>
+        /*padding: 10px;*/
+        /*margin: 0;*/
+        /*white-space: nowrap; */ /* 避免文字換行 */
+        /*width: 80%;*/ /* 将textlist宽度设置为屏幕宽度的100% */
+        /*font-size: 1em; */ /* 使用vw单位，根据屏幕宽度自动调整字体大小 */
+        position: relative;
+      }
+    </style>
   </head>
   <body>
-    <input type="text" id="InputField" oninput="InputChange()" placeholder="輸入姓名 區域或編號">
-	<div id="textlist"></div>
-  <script>
-	var inputfield = document.getElementById('InputField');
-	var xhr = new XMLHttpRequest();
-	var pageText;
-	var text4 = []
-	var text5 = [];
-
-	xhr.open('GET', 'https://script.google.com/macros/s/AKfycbxKOVvSeD2_dNrb0P9YYecoAt3VonW7Qub1qTp_6xulvpPEJU6cYodKpRc_AasJDHHP/exec', true);
-	//console.log(pageText);
-	xhr.onload = function() 
-	{
-    		if (xhr.status === 200) 
-		{
-			pageText = xhr.responseText;
-        		//console.log(pageText);
-			var text1 = pageText.split('.');
-			//console.log(text1);
-			for(var i = 0; i < text1.length - 1; i++)
-			{
-				var text2 = text1[i].split(',');
-				var text3 = text2[0] +'　　'+ text2[1] +'　　'+ text2[2] + '<br>';
-				text4.push(text3);
-				//console.log(text3);
-			}
-    		} 
-		else 
-		{
-        		console.error(xhr.status);
-    		}
-	
-	};
-	xhr.send();
-	function InputChange()
-	{
- 		textlist.textContent = ' ';
-	 	text5 = [];
-		var inputvalue = document.getElementById('InputField').value; 
-		//console.log('000');
-		for(var i = 0; i < text4.length; i++)
-		{
-			if(text4[i].includes(inputvalue))
-			{
-				//console.log(text4[i]);
-				text5.push(text4[i]);
-			}
-		}
-		var text6 = '';
-		for(var i = 0; i < text5.length; i++)
-		{
- 			text6 += text5[i];
-		}
-		if(inputvalue != '')
-		{
-			textlist.innerHTML = text6;
-			if(text5.length == 0)
-				textlist.innerHTML = '查無資料<br>';
-		}
-	
-	}
-	function scaleInput() 
-	{
-		var a1 = window.innerWidth / inputfield.offsetWidth;
-		a1 = Math.floor(a1);
-		console.log(a1);
-        	var newFontSize = window.innerWidth - 20 + "px";
-        	inputfield.style.width = newFontSize;
-		inputfield.style.height = inputfield.offsetHeight * a1 + "px";
-		var paragraph = document.getElementById("InputField");
-        	var computedStyle = window.getComputedStyle(paragraph);
-        	var fontSize = computedStyle.getPropertyValue("font-size");
-        	var numericFontSize = parseFloat(fontSize);
-		inputfield.style.fontSize = numericFontSize * a1 + "px";
-		paragraph = document.getElementById("textlist");
-        	computedStyle = window.getComputedStyle(paragraph);
-        	fontSize = computedStyle.getPropertyValue("font-size");
-        	numericFontSize = parseFloat(fontSize);
-		//console.log(numericFontSize);
-		//paragraph.style.fontSize = numericFontSize * a1  *0.65 + "px";
-		paragraph.style.fontSize = window.innerWidth / 17 + "px";
-			
-	}
-	scaleInput();
-</script>
+    <input
+      type="text"
+      id="InputField"
+      oninput="InputChange()"
+      placeholder="載入中...請稍後..."
+    />
+    <div id="textlist"></div>
+    <script>
+      var inputfield = document.getElementById("InputField");
+      var xhr = new XMLHttpRequest();
+      var pageText;
+      var text4 = [];
+      var text5 = [];
+      inputfield.disabled = true;
+      xhr.open(
+        "GET",
+        "https://script.google.com/macros/s/AKfycbxKOVvSeD2_dNrb0P9YYecoAt3VonW7Qub1qTp_6xulvpPEJU6cYodKpRc_AasJDHHP/exec",
+        true
+      );
+      //console.log(pageText);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          pageText = xhr.responseText;
+          //console.log(pageText);
+          var text1 = pageText.split(".");
+          //console.log(text1);
+          for (var i = 0; i < text1.length - 1; i++) {
+            var text2 = text1[i].split(",");
+            var text3 =
+              text2[0] + "　　" + text2[1] + "　　" + text2[2] + "<br>";
+            text4.push(text3);
+            //console.log(text3);
+          }
+        } else {
+          console.error(xhr.status);
+        }
+        inputfield.disabled = false;
+        inputfield.placeholder = "輸入姓名 區域或編號";
+      };
+      xhr.send();
+      function InputChange() {
+        textlist.textContent = " ";
+        text5 = [];
+        var inputvalue = document.getElementById("InputField").value;
+        //console.log('000');
+        for (var i = 0; i < text4.length; i++) {
+          if (text4[i].includes(inputvalue)) {
+            //console.log(text4[i]);
+            text5.push(text4[i]);
+          }
+        }
+        var text6 = "";
+        for (var i = 0; i < text5.length; i++) {
+          text6 += text5[i];
+        }
+        if (inputvalue != "") {
+          textlist.innerHTML = text6;
+          if (text5.length == 0) textlist.innerHTML = "查無資料<br>";
+        }
+      }
+      function scaleInput() {
+        var a1 = window.innerWidth / inputfield.offsetWidth;
+        a1 = Math.floor(a1);
+        console.log(a1);
+        var newFontSize = window.innerWidth - 20 + "px";
+        inputfield.style.width = newFontSize;
+        inputfield.style.height = inputfield.offsetHeight * a1 + "px";
+        var paragraph = document.getElementById("InputField");
+        var computedStyle = window.getComputedStyle(paragraph);
+        var fontSize = computedStyle.getPropertyValue("font-size");
+        var numericFontSize = parseFloat(fontSize);
+        inputfield.style.fontSize = numericFontSize * a1 + "px";
+        paragraph = document.getElementById("textlist");
+        computedStyle = window.getComputedStyle(paragraph);
+        fontSize = computedStyle.getPropertyValue("font-size");
+        numericFontSize = parseFloat(fontSize);
+        //console.log(numericFontSize);
+        //paragraph.style.fontSize = numericFontSize * a1  *0.65 + "px";
+        paragraph.style.fontSize = window.innerWidth / 17 + "px";
+      }
+      scaleInput();
+    </script>
   </body>
 </html>
