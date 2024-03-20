@@ -37,6 +37,7 @@
       var text7 = [];
       var i = 0;
       var j = 0;
+      var k = 0;
       inputfield.disabled = true;
       xhr.open(
         "GET",
@@ -81,7 +82,9 @@
         for (i = 0; i < 19; i++) {
           for (j = 0; j < text5.length; j++) {
             if (text5[j].length < i) continue;
-            if (text5[j].indexOf(inputvalue) == i) {
+            k = text5[j].indexOf(inputvalue);
+            if (text5[j].includes("(")) k--;
+            if (k == i) {
               text7.push(text5[j]);
               text7.push("________________________________<br>");
               text5.splice(j, 1);
