@@ -34,6 +34,9 @@
       var pageText;
       var text4 = [];
       var text5 = [];
+      var text7 = [];
+      var i = 0;
+      var j = 0;
       inputfield.disabled = true;
       xhr.open(
         "GET",
@@ -66,27 +69,35 @@
       function InputChange() {
         textlist.textContent = " ";
         text5 = [];
+        text7 = [];
         var inputvalue = document.getElementById("InputField").value;
         //console.log('000');
         for (var i = 0; i < text4.length; i++) {
           if (text4[i].includes(inputvalue)) {
-            //console.log(text4[i]);
-            //var text7 = "<u>" + text4[i] + "</u>";
-
             text5.push(text4[i]);
-            text5.push("________________________________<br>");
-            //text5.push("<br>");
           }
         }
         var text6 = "";
-        text5.pop();
-        for (var i = 0; i < text5.length; i++) {
-          text6 += text5[i];
+        for (i = 0; i < 19; i++) {
+          for (j = 0; j < text5.length; j++) {
+            if (text5[j].length < i) continue;
+            if (text5[j].indexOf(inputvalue) == i) {
+              text7.push(text5[j]);
+              text7.push("________________________________<br>");
+              text5.splice(j, 1);
+              j--;
+            }
+          }
+        }
+        text7.pop();
+        for (i = 0; i < text7.length; i++) {
+          text6 += text7[i];
         }
         if (inputvalue != "") {
           textlist.innerHTML = text6;
-          if (text5.length == 0) textlist.innerHTML = "查無資料<br>";
+          if (text6.length == 0) textlist.innerHTML = "查無資料<br>";
         }
+        console.log(text7.length);
       }
       function scaleInput() {
         var a1 = window.innerWidth / inputfield.offsetWidth;
